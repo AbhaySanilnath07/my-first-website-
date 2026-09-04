@@ -58,4 +58,482 @@
             animation: marquee 30s linear infinite;
         }
 
-        .ticker
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .ticker-symbol {
+            font-weight: 600;
+        }
+
+        .ticker-price {
+            color: var(--text-muted);
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 0;
+            background-color: rgba(11, 14, 20, 0.8);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .search-box input {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            outline: none;
+            width: 240px;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            width: 280px;
+        }
+
+        /* Main Layout */
+        main {
+            padding: 2rem 0 4rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .live-indicator {
+            font-size: 0.75rem;
+            color: var(--green);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pulse {
+            width: 6px;
+            height: 6px;
+            background-color: var(--green);
+            border-radius: 50%;
+            animation: pulse-animation 1.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* Market Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #313b4d;
+            transform: translateY(-2px);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .symbol {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .company-name {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge.up {
+            background-color: var(--green-bg);
+            color: var(--green);
+        }
+
+        .badge.down {
+            background-color: var(--red-bg);
+            color: var(--red);
+        }
+
+        /* Table Section */
+        .table-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: var(--bg-card-hover);
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        /* News Section */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .news-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.2rem;
+            transition: border-color 0.2s;
+        }
+
+        .news-card:hover {
+            border-color: #313b4d;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 0.8rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-source {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .news-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .news-title:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .search-box, .search-box input {
+                width: 100%;
+            }
+            .search-box input:focus {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker" id="ticker-content">
+            </div>
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                StoxPulse
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search symbol or market..." onkeyup="filterStocks()">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            
+            <div>
+                <div class="section-title">
+                    <span>Market Overview</span>
+                    <div class="live-indicator"><div class="pulse"></div> Live Updates</div>
+                </div>
+
+                <div class="cards-grid" id="featured-cards">
+                    </div>
+
+                <div class="section-title">
+                    <span>Watchlist</span>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th class="text-right">Price</th>
+                                <th class="text-right">24h Change</th>
+                                <th class="text-right">Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">
+                    <span>Latest Market News</span>
+                </div>
+                <div class="news-list" id="news-container">
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Sample Stock Data
+        const stockData = [
+            { symbol: 'AAPL', name: 'Apple Inc.', price: 182.52, change: 1.25, volume: '52.4M' },
+            { symbol: 'NVDA', name: 'NVIDIA Corp.', price: 788.17, change: 4.82, volume: '41.2M' },
+            { symbol: 'TSLA', name: 'Tesla, Inc.', price: 197.41, change: -2.31, volume: '88.1M' },
+            { symbol: 'MSFT', name: 'Microsoft Corp.', price: 407.48, change: 0.85, volume: '21.3M' },
+            { symbol: 'AMZN', name: 'Amazon.com Inc.', price: 174.99, change: -0.45, volume: '34.8M' },
+            { symbol: 'GOOGL', name: 'Alphabet Inc.', price: 145.29, change: 1.10, volume: '19.6M' },
+            { symbol: 'META', name: 'Meta Platforms', price: 484.03, change: 2.15, volume: '15.2M' }
+        ];
+
+        // Sample News Data
+        const newsData = [
+            { source: 'Financial Times', time: '10m ago', title: 'Tech stocks rally as inflation concerns ease globally' },
+            { source: 'Bloomberg', time: '35m ago', title: 'Chipmaker exports surge following high demand for AI hardware' },
+            { source: 'Reuters', time: '1h ago', title: 'Central Bank signals potential rate pauses in upcoming meeting' },
+            { source: 'Wall Street Journal', time: '2h ago', title: 'EV sector faces competitive shifts amidst changing policy landscape' }
+        ];
+
+        // Render Ticker
+        function renderTicker() {
+            const tickerEl = document.getElementById('ticker-content');
+            // Duplicate content for seamless infinite marquee loop
+            const itemsHtml = stockData.concat(stockData).map(stock => {
+                const isPositive = stock.change >= 0;
+                const sign = isPositive ? '+' : '';
+                const color = isPositive ? 'var(--green)' : 'var(--red)';
+                return `
+                    <div class="ticker-item">
+                        <span class="ticker-symbol">${stock.symbol}</span>
+                        <span class="ticker-price">$${stock.price.toFixed(2)}</span>
+                        <span style="color: ${color}">${sign}${stock.change.toFixed(2)}%</span>
+                    </div>
+                `;
+            }).join('');
+            tickerEl.innerHTML = itemsHtml;
+        }
+
+        // Render Top Cards (First 3 Stocks)
+        function renderFeaturedCards() {
+            const cardsEl = document.getElementById('featured-cards');
+            cardsEl.innerHTML = stockData.slice(0, 3).map(stock => {
+                const isPositive = stock.change >= 0;
+                const sign = isPositive ? '+' : '';
+                const badgeClass = isPositive ? 'up' : 'down';
+                const arrow = isPositive ? '▲' : '▼';
+                
+                return `
+                    <div class="card">
+                        <div class="card-top">
+                            <div>
+                                <div class="symbol">${stock.symbol}</div>
+                                <div class="company-name">${stock.name}</div>
+                            </div>
+                            <span class="badge ${badgeClass}">${arrow} ${sign}${Math.abs(stock.change)}%</span>
+                        </div>
+                        <div class="price">$${stock.price.toFixed(2)}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Stock Table
+        function renderTable(dataToRender = stockData) {
+            const tableEl = document.getElementById('stock-table-body');
+            tableEl.innerHTML = dataToRender.map(stock => {
+                const isPositive = stock.change >= 0;
+                const sign = isPositive ? '+' : '';
+                const colorClass = isPositive ? 'var(--green)' : 'var(--red)';
+                
+                return `
+                    <tr>
+                        <td style="font-weight: 600;">${stock.symbol}</td>
+                        <td style="color: var(--text-muted);">${stock.name}</td>
+                        <td class="text-right" style="font-weight: 600;">$${stock.price.toFixed(2)}</td>
+                        <td class="text-right" style="color: ${colorClass}; font-weight: 600;">${sign}${stock.change.toFixed(2)}%</td>
+                        <td class="text-right" style="color: var(--text-muted);">${stock.volume}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Render News
+        function renderNews() {
+            const newsEl = document.getElementById('news-container');
+            newsEl.innerHTML = newsData.map(item => `
+                <div class="news-card">
+                    <div class="news-meta">
+                        <span class="news-source">${item.source}</span>
+                        <span>•</span>
+                        <span>${item.time}</span>
+                    </div>
+                    <a href="#" class="news-title">${item.title}</a>
+                </div>
+            `).join('');
+        }
+
+        // Search Filter Logic
+        function filterStocks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = stockData.filter(stock => 
+                stock.symbol.toLowerCase().includes(query) || 
+                stock.name.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        }
+
+        // Simulating Real-Time Updates
+        function simulateLiveUpdates() {
+            setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * stockData.length);
+                const delta = (Math.random() - 0.49) * 0.5; // Slight random shift
+                stockData[randomIndex].price += delta;
+                stockData[randomIndex].change += delta * 0.1;
+                
+                renderTable();
+                renderFeaturedCards();
+            }, 3000);
+        }
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTicker();
+            renderFeaturedCards();
+            renderTable();
+            renderNews();
+            simulateLiveUpdates();
+        });
+    </script>
+</body>
+</html>
